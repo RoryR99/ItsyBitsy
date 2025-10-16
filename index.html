@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itsy Bitsy Insights - Tarot Wisdom for Deep Clarity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #0a0a0a;
+            color: #e8d5b7;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: #d4af37;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        .logo {
+            max-width: 300px;
+            margin: 0 auto 20px;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: #d4af37;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #b8a488;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            position: relative;
+            z-index: 10;
+            background: #1a1a1a;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        nav a {
+            color: #d4af37;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #d4af37;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0a 100%);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941e 100%);
+            color: #0a0a0a;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+        }
+
+        section {
+            position: relative;
+            z-index: 10;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #d4af37;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            border-color: #fff;
+        }
+
+        .service-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.8em;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            line-height: 1.6;
+            color: #b8a488;
+        }
+
+        .about {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 50px;
+            margin: 40px 0;
+            border: 2px solid #d4af37;
+        }
+
+        .about p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .testimonials {
+            background: #1a1a1a;
+            padding: 60px 20px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            color: #d4af37;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0a 100%);
+        }
+
+        .contact h2 {
+            margin-bottom: 30px;
+        }
+
+        .contact p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            color: #d4af37;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #d4af37;
+        }
+
+        footer {
+            position: relative;
+            z-index: 10;
+            background: #0a0a0a;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 2px solid #d4af37;
+            color: #b8a488;
+        }
+
+        .moon {
+            position: fixed;
+            top: 100px;
+            right: 100px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941e 100%);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.5);
+            opacity: 0.3;
+            z-index: 1;
+            animation: moonGlow 4s infinite alternate;
+        }
+
+        @keyframes moonGlow {
+            from { box-shadow: 0 0 60px rgba(212, 175, 55, 0.5); }
+            to { box-shadow: 0 0 100px rgba(212, 175, 55, 0.7); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .moon {
+                width: 80px;
+                height: 80px;
+                right: 20px;
+                top: 50px;
+            }
+        }
+
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 40px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="moon"></div>
+
+    <header>
+        <img src="itsy.jpg" alt="Itsy Bitsy Insights Logo" class="logo">
+        <p class="tagline">Tarot wisdom for deep clarity</p>
+        <p class="subtitle">Readings • Intuition • Spiritual Growth</p>
+    </header>
+
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Book Now</a>
+    </nav>
+
+    <div class="hero">
+        <h1>It's Time for Change</h1>
+        <p>Are you ready to unlock the wisdom within? Discover clarity, insight, and spiritual growth through the ancient art of tarot.</p>
+        <a href="#contact" class="cta-button">Begin Your Journey</a>
+    </div>
+
+    <section id="services">
+        <h2>Sacred Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌙</div>
+                <h3>Tarot Readings</h3>
+                <p>Receive personalized guidance through the wisdom of the cards. Each reading illuminates your path and reveals hidden truths.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>Intuitive Insights</h3>
+                <p>Connect with your inner knowing. Intuitive guidance helps you navigate life's challenges with confidence and clarity.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔮</div>
+                <h3>Energy Readings</h3>
+                <p>Understand the energetic forces shaping your life. Discover blocks, opportunities, and transformative potential.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⭐</div>
+                <h3>Spiritual Growth</h3>
+                <p>Embark on a journey of self-discovery and evolution. Develop your spiritual practice and deepen your connection to the divine.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="about">
+        <div class="about">
+            <h2>Welcome to Your Transformation</h2>
+            <p>At Itsy Bitsy Insights, we believe that every soul carries infinite wisdom waiting to be unlocked. Through the sacred practice of tarot and intuitive guidance, we help you tap into your deepest knowing.</p>
+            <p>Change is inevitable, but transformation is a choice. Whether you're seeking clarity on a specific situation, looking to understand your life's purpose, or ready to embrace your spiritual gifts, we're here to guide you.</p>
+            <p>Each reading is a sacred conversation between you, the cards, and the universe. Together, we'll explore the insights that emerge and create a path forward that honors your highest good.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="testimonials" class="testimonials">
+        <h2>Voices of Transformation</h2>
+        <div class="testimonial-card">
+            <p class="testimonial-text">"The reading I received was incredibly accurate and helped me see my situation from a completely new perspective. I finally have the clarity I needed to move forward."</p>
+            <p class="testimonial-author">— Sarah M.</p>
+        </div>
+        <div class="testimonial-card">
+            <p class="testimonial-text">"I was skeptical at first, but the energy reading revealed things about myself I didn't even realize. It's been a catalyst for profound personal growth."</p>
+            <p class="testimonial-author">— Michael T.</p>
+        </div>
+        <div class="testimonial-card">
+            <p class="testimonial-text">"Every reading feels like coming home to myself. The guidance is always exactly what I need to hear, delivered with compassion and wisdom."</p>
+            <p class="testimonial-author">— Jennifer L.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="contact" class="contact">
+        <h2>Ready for Your Reading?</h2>
+        <p>The universe is calling you forward. Take the first step toward clarity and transformation.</p>
+        <a href="#" class="cta-button">DM for Bookings</a>
+        <div class="social-links">
+            <a href="#">📧 Email</a>
+            <a href="#">📱 Instagram</a>
+            <a href="#">💬 WhatsApp</a>
+        </div>
+        <div class="divider"></div>
+        <p style="margin-top: 40px; font-size: 1.1em; font-style: italic;">Trust the timing of your life. The answers you seek are already within you.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Itsy Bitsy Insights. All rights reserved.</p>
+        <p style="margin-top: 10px;">Tarot wisdom • Intuitive guidance • Spiritual transformation</p>
+    </footer>
+
+    <script>
+        // Create twinkling stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for moon
+        window.addEventListener('scroll', () => {
+            const moon = document.querySelector('.moon');
+            const scrolled = window.pageYOffset;
+            moon.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>
